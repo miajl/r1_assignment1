@@ -1,7 +1,9 @@
 Research Track 1 Assignment 1
 ================================
 Mia Jane La Rocca
+
 S6344889
+
 miajl
 
 ## Assignment Goal
@@ -12,7 +14,7 @@ The goal of this assignment was to command the robot to put all of the golden ma
 -----------------------------
 The following algorithm was implemented. The helper functions used to find the markers and drive towards the marker are described in the Helper Functions section. The blocks that are in the pile are tracked using a list of their ids.
 
-[flowchart]
+![main_flowchart](./flowcharts/main_loop.png)
 
 ## Helper Functions
 -----------------------------
@@ -43,8 +45,9 @@ This assignment was completed using python 3. If you do not have it installed, y
 $ python run.py assignment.py
 ```
 When the program is complete "MISSION COMPLETE" is written to the console along with the total number of blocks put together. 
-This assignment was completed and tested with python 3.10.12. Here is one of the test results
-[TODO test image]
+This assignment was completed and tested with python 3.10.12. Here is one of the test results:
+
+![result](./readme_images/r1_a1_result1.png)
 
 ## Possible Improvements
 -----------------------------
