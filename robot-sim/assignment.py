@@ -4,18 +4,17 @@ import time
 from sr.robot import *
 
 #constants
-a_th = 0.5 #angular distance to determine whether to turn towards the object or drive straight
-d_th_grab = 0.4 #distance from block to grab
-d_th_drop = 0.6 #distance from pile to drop a block
-turn_timeout_limit = 25 #how long to turn while looking for tokens if the robot doesn't see any in front of it
+a_th = 0.5 # angular distance to determine whether to turn towards the object or drive straight
+d_th_grab = 0.4 # distance from block to grab
+d_th_drop = 0.6 # distance from pile to drop a block
+turn_timeout_limit = 25 # how long to turn while looking for tokens if the robot doesn't see any in front of it
 
 
-R = Robot()
-holding_block = False
-blocks_in_pile = list();
+R = Robot() 
+holding_block = False # whether the robot is holding a block
+blocks_in_pile = list(); # List that tracks 
 
-pile_location = [0, 0]
-current_block = -1
+current_block = -1 # Block that the robot is either driving towards or holding onto
 mission_complete = False
 
 def drive(speed, seconds):
@@ -61,7 +60,7 @@ def find_token(in_pile, turn_timeout = 0):
     tmp_marker = -1
     for token in R.see():
         # only consider relevant blocks
-        if token.dist < dist and (in_pile == (token.info.code in blocks_in_pile)):
+        if token.dist < dist and token.info.marker_type is MARKER_TOKEN_GOLD and (in_pile == (token.info.code in blocks_in_pile)):
             dist = token.dist
             rot_y = token.rot_y
             tmp_marker = token.info.code
@@ -131,8 +130,4 @@ while not mission_complete:
             holding_block = False
 
 print("MISSION COMPLETE: stacked " + str(len(blocks_in_pile)) + " blocks")
-if len(blocks_in_pile) != 6:
-    print("MISSION FAILED")
-else:
-    print("MISSION SUCCESS")
     
